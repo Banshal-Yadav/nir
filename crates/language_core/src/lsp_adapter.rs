@@ -14,10 +14,9 @@ pub trait ToLspPosition {
 pub struct PromptResponseContext {
     /// The original message shown to the user
     pub message: String,
-    /// The action (button) the user selected
+    /// The selected action (button) the user selected
     pub selected_action: lsp::MessageActionItem,
 }
-
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum LanguageServerStatusUpdate {
     Binary(BinaryStatus),

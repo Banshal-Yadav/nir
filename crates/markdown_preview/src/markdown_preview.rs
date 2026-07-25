@@ -32,7 +32,9 @@ actions!(
         /// Opens a following markdown preview that syncs with the editor.
         OpenFollowingPreview,
         /// Toggles between compact (centered, max-width) and full-width preview.
-        ToggleCompactMode
+        ToggleCompactMode,
+        /// Closes the markdown preview and returns focus to the source editor.
+        CloseAndReturnToEditor
     ]
 );
 

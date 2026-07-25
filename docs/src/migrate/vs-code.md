@@ -13,9 +13,21 @@ It covers which settings import automatically, which shortcuts map cleanly, and 
 
 Nir is built from source. See the [development guides](../development.md) for platform-specific build instructions.
 
+<<<<<<< HEAD
 After building, you can launch Nir from your terminal using:
 `nir .`
 This opens the current directory in Nir.
+=======
+For macOS, you can download it from zed.dev/download, or install via Homebrew:
+`brew install --cask zed`
+
+For most Linux users, the easiest way to install Zed is through our installation script:
+`curl -f https://zed.dev/install.sh | sh`
+
+After installation, you can launch Zed from your Applications folder (macOS) or directly from the terminal (Linux) using:
+`zed .`
+This opens the current directory in Zed.
+>>>>>>> upstream/main
 
 ## Import Settings from VS Code
 

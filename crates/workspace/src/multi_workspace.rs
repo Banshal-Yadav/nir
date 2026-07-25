@@ -2700,7 +2700,12 @@ impl MultiWorkspace {
                                     .bg(cx.theme().colors().border)
                             )
                     )
-                    .children(avatars)
+                    .child(
+                        div()
+                            .flex_1()
+                            .overflow_y_scroll()
+                            .children(avatars),
+                    )
                     .child(
                         // "+" button to add project to window
                         div()
