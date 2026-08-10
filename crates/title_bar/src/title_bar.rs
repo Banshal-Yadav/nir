@@ -28,7 +28,7 @@ use command_palette_hooks::CommandPaletteFilter;
 
 use gpui::{
     Action, Anchor, Animation, AnimationExt, AnyElement, App, Context, Element, Entity,
-    InteractiveElement, IntoElement, MouseButton, ParentElement, Render,
+    Focusable, InteractiveElement, IntoElement, MouseButton, ParentElement, Render,
     StatefulInteractiveElement, Styled, Subscription, TaskExt, WeakEntity, Window, actions, div,
     pulsating_between,
 };
@@ -897,24 +897,18 @@ impl TitleBar {
                     });
                 }
             })
-            .trigger_with_tooltip(
-                Button::new("project_name_trigger", display_name)
-                    .label_size(LabelSize::Small)
-                    .tab_index(0isize)
-                    .when(self.worktree_count(cx) > 1, |this| {
-                        this.end_icon(
-                            Icon::new(IconName::ChevronDown)
-                                .size(IconSize::XSmall)
-                                .color(Color::Muted),
-                        )
-                    })
-                    .selected_style(ButtonStyle::Tinted(TintColor::Accent))
-                    .when(!is_project_selected, |s| s.color(Color::Muted)),
-                move |_window, cx| {
-                    Tooltip::for_action("Recent Projects", &zed_actions::OpenRecent::default(), cx)
-                },
-            )
-            .anchor(gpui::Anchor::TopLeft)
+            .when(self._worktree_count(cx) > 1, |this| {
+                this.end_icon(
+                    Icon::new(IconName::ChevronDown)
+                        .size(IconSize::XSmall)
+                        .color(Color::Muted),
+                )
+            })
+            .selected_style(ButtonStyle::Tinted(TintColor::Accent))
+            .when(!is_project_selected, |s| s.color(Color::Muted))
+            .tooltip(|_window, cx| {
+                Tooltip::for_action("Recent Projects", &zed_actions::OpenRecent::default(), cx)
+            })
             .into_any_element()
     }
 
@@ -953,7 +947,7 @@ impl TitleBar {
                 Button::new("project_name_trigger", display_name)
                     .label_size(LabelSize::Small)
                     .tab_index(0isize)
-                    .when(self.worktree_count(cx) > 1, |this| {
+                    .when(self._worktree_count(cx) > 1, |this| {
                         this.end_icon(
                             Icon::new(IconName::ChevronDown)
                                 .size(IconSize::XSmall)

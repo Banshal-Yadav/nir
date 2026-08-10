@@ -2703,7 +2703,10 @@ impl MultiWorkspace {
                     .child(
                         div()
                             .flex_1()
-                            .overflow_y_scroll()
+                            .map(|mut this| {
+                                this.style().overflow.y = Some(gpui::Overflow::Scroll);
+                                this
+                            })
                             .children(avatars),
                     )
                     .child(
@@ -2753,7 +2756,7 @@ impl MultiWorkspace {
                             .items_center()
                             .justify_center()
                             .child(
-                                ui::Icon::new(ui::IconName::Sliders)
+                                ui::Icon::new(ui::IconName::Settings)
                                     .color(ui::Color::Muted)
                             )
                             .cursor_pointer()
@@ -2956,11 +2959,6 @@ impl Render for MultiWorkspace {
                 })),
             window,
             cx,
-            Tiling {
-                left: false,
-                right: sidebar_on_right && multi_workspace_enabled && self.sidebar_open(),
-                ..Tiling::default()
-            },
         )
     }
 }

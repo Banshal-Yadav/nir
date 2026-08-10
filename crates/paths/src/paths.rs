@@ -494,14 +494,14 @@ pub fn local_vscode_folder_name() -> &'static str {
 /// Returns the relative path to a `settings.json` file within a project.
 pub fn local_settings_file_relative_path() -> &'static RelPath {
     static CACHED: LazyLock<&'static RelPath> =
-        LazyLock::new(|| RelPath::unix(".nir/settings.json").unwrap());
+        LazyLock::new(|| RelPath::from_unix_str(".nir/settings.json").unwrap());
     *CACHED
 }
 
 /// Returns the relative path to a `tasks.json` file within a project.
 pub fn local_tasks_file_relative_path() -> &'static RelPath {
     static CACHED: LazyLock<&'static RelPath> =
-        LazyLock::new(|| RelPath::unix(".nir/tasks.json").unwrap());
+        LazyLock::new(|| RelPath::from_unix_str(".nir/tasks.json").unwrap());
     *CACHED
 }
 
@@ -524,7 +524,7 @@ pub fn task_file_name() -> &'static str {
 /// .nir/debug.json
 pub fn local_debug_file_relative_path() -> &'static RelPath {
     static CACHED: LazyLock<&'static RelPath> =
-        LazyLock::new(|| RelPath::unix(".nir/debug.json").unwrap());
+        LazyLock::new(|| RelPath::from_unix_str(".nir/debug.json").unwrap());
     *CACHED
 }
 

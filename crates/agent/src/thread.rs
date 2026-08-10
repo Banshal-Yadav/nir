@@ -3871,7 +3871,7 @@ impl Thread {
         self.title_generation_error.clone()
     }
 
-    pub fn can_generate_title(&self, cx: &App) -> bool {
+    pub fn can_generate_title(&self, _cx: &App) -> bool {
         self.pending_title_generation.is_none()
             && (self.summarization_model.is_some() || self.model().is_some())
     }
@@ -3951,7 +3951,7 @@ impl Thread {
             return;
         }
 
-        self.title_generation_failed = false;
+        self.title_generation_error = None;
         let model = self
             .model()
             .cloned()

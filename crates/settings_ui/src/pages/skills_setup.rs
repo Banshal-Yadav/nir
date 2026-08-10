@@ -290,8 +290,11 @@ fn render_skill_row(
                                 cx,
                             );
 
+                            let app_state = workspace::AppState::global(cx);
+                            let fs = app_state.fs.clone();
+
                             cx.spawn(async move |settings_window, cx| {
-<                                if answer.await != Ok(0) {
+                                if answer.await != Ok(0) {
                                     return;
                                 }
 

@@ -1,4 +1,4 @@
-use crate::{ItemHandle, MultiWorkspace, Pane, SidebarSide};
+use crate::{ItemHandle, MultiWorkspace, Pane, SidebarSide, sidebar_side_context_menu, ToggleWorkspaceSidebar};
 use gpui::{
     AnyView, App, Context, Decorations, Entity, IntoElement, ParentElement, Render,
     SharedString, Styled, Subscription, WeakEntity, Window, Anchor, FocusHandle,
@@ -7,7 +7,7 @@ use gpui::{
 use settings::{SettingsContent, update_settings_file};
 use std::{any::TypeId, sync::Arc};
 use theme::CLIENT_SIDE_DECORATION_ROUNDING;
-use ui::{ContextMenu, IconPosition, prelude::*, right_click_menu};
+use ui::{ContextMenu, Divider, IconPosition, Indicator, Tooltip, prelude::*, right_click_menu};
 
 /// Describes how a status-bar item can be hidden by the user.
 ///

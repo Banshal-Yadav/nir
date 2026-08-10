@@ -544,7 +544,7 @@ async-std = { version = "1.12", features = ["unstable"] }
 async-tar = "0.6"
 async-task = "4.7"
 async-trait = "0.1"
-async-tungstenite = "0.34"
+async-tungstenite = "0.31.0"
 async-process = "2.5.0"
 async_zip = { version = "0.0.18", features = ["deflate", "deflate64"] }
 aws-config = { version = "1.8.10", features = ["behavior-version-latest"] }
